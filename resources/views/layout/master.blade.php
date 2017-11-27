@@ -4,7 +4,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Moderna - Bootstrap 3 flat corporate template</title>
+  <title>My Job Application</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="" />
   <!-- css -->
@@ -16,23 +16,7 @@
    <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}">
    <link rel="stylesheet" href="{{ asset('css/custom-fonts.css') }}">
    <link rel="stylesheet" href="{{ asset('css/bootstrap/glyphicon.css') }}">
-   
-  <!-- <link href="css/bootstrap.min.css" rel="stylesheet" />
-  <link href="css/fancybox/jquery.fancybox.css" rel="stylesheet">
-  <link href="css/jcarousel.css" rel="stylesheet" />
-  <link href="css/flexslider.css" rel="stylesheet" />
-  <link href="css/style.css" rel="stylesheet" /> -->
-
-  <!-- Theme skin -->
   <link rel="stylesheet" href="{{ asset('css/default.css') }}">
-
-  <!-- =======================================================
-    Theme Name: Moderna
-    Theme URL: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/
-    Author: BootstrapMade
-    Author URL: https://bootstrapmade.com
-  ======================================================= -->
-
 </head>
 
 <body>
@@ -58,9 +42,6 @@
     </div>
   </div>
  </div>
-  <!-- javascript
-    ================================================== -->
-  <!-- Placed at the end of the document so the pages load faster -->
   <script src="{{ asset('js/jquery/jquery.js') }}"></script>
   <script src="{{ asset('js/jquery/jquery.easing.1.3.js') }}"></script>
   <script src="{{ asset('js/bootstrap/bootstrap.min.js') }}"></script>

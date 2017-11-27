@@ -15,7 +15,7 @@ class SessionsController extends Controller
     			Session::flash("notice","You has login".$use->email);
     			return redirect('/');
     		}else{
-    			return view('sessions.create');
+    			return view('sessions.login');
     		}
     }
 
@@ -28,7 +28,7 @@ class SessionsController extends Controller
     			return redirect()->intended('/');
     		}else{
     			Session::flash("error","Login Fails");
-    			return view('sessions.create');
+    			return view('sessions.login');
     		}
         } catch (\Cartalyst\Sentinel\Checkpoints\NotActivatedException $e) {
 

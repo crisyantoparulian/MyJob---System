@@ -53,6 +53,26 @@
   <script src="{{ asset('js/jquery.flexslider.js') }}"></script>
   <script src="{{ asset('js/animate.js') }}"></script>
   <script src="{{ asset('js/custom.js') }}"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+  <script>
+    function isNumberKey(evt){
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
+}
+  $(document).ready(function(){
+    var date_input=$('input[name="date_of_birth"]'); //our date input has the name "date"
+    var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+    date_input.datepicker({
+      format: 'yyyy/mm/dd',
+      container: container,
+      todayHighlight: false,
+      autoclose: true,
+    })
+  })
+</script>
 
 </body>
 

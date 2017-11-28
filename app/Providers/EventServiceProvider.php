@@ -16,6 +16,9 @@ class EventServiceProvider extends ServiceProvider
        'App\Events\ActivationEvent' => [
             'App\Listeners\ActivationEmailSender',
             ],
+            'App\Events\ReminderEvent' => [
+            'App\Listeners\ReminderEmailSender',
+            ],
     ];
 
     /**

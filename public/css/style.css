@@ -1998,3 +1998,18 @@ header{
 .mypanel .panel-heading{
 	background: rgb(0, 191, 255);
 }
+.panelform{
+	    border: 1px solid #ccc!important;
+	    border-bottom-left-radius: 25px;
+	    border-bottom-right-radius: 25px;
+	}
+.panelform .panel-heading{
+	background: floralwhite;
+}
+.bd-example {
+  position: relative;
+  padding: 1rem;
+  margin: 1rem (-$grid-gutter-width / 2);
+  border: solid #f7f7f9;
+  border-width: .2rem 0 0;
+ }

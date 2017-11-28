@@ -5,6 +5,7 @@ use Sentinel;
 use Session;
 use App\Http\Requests\SessionRequest;
 use Redirect;
+use DB;
 
 class SessionsController extends Controller
 {	
@@ -25,7 +26,14 @@ class SessionsController extends Controller
     	if($user = Sentinel::authenticate($request->all()))
     		{
     			Session::flash("notice", "Welcome ".$user->email);
-    			return redirect()->intended('/');
+                $login=Sentinel::getUser()->id ;
+                $cek= DB::table('user_details')->where('user_id', '=', $login)->first();
+                if($cek!= null){
+                    return redirect()->intended('/');
+                }else{
+                    return redirect('details.create');    
+                }
+    			
     		}else{
     			Session::flash("error","Login Fails");
     			return view('sessions.login');

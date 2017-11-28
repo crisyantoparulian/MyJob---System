@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use File;
+use App\DetailUser;
+use Sentinel;
+use Session;
+
 
 class DetailUserController extends Controller
 {
@@ -13,7 +18,7 @@ class DetailUserController extends Controller
      */
     public function index()
     {
-        //
+        return view('users.index');
     }
 
     /**
@@ -23,7 +28,7 @@ class DetailUserController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create');
     }
 
     /**
@@ -34,7 +39,15 @@ class DetailUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->except(['photo','file_cv']);
+        $input['user_id'] = Sentinel::getUser()->id ;
+        $input['photo'] = time().'.'.$request->photo->getClientOriginalExtension();
+        $request->photo->move(public_path('photo'), $input['photo']);
+        $input['file_cv'] = time().'.'.$request->file_cv->getClientOriginalExtension();
+        $request->file_cv->move(public_path('cv'), $input['file_cv']);   
+        DetailUser::create($input);
+        Session::flash("notice","Article success created");
+        return redirect()->route("details.create");
     }
 
     /**

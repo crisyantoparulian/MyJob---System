@@ -3,13 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use File;
 use App\DetailUser;
-use Sentinel;
-use Session;
 
-
-class DetailUserController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +14,12 @@ class DetailUserController extends Controller
      */
     public function index()
     {
-        $id=Sentinel::getUser()->id;
-        $details = DetailUser::where('user_id','=',$id)->get();
-        return view('users.index')->with('details', $details);
+        $count = DetailUser::where('status_cv','=','Unread')->count();
+        $count2 = DetailUser::all()->count();
+
+       // dd($countall);
+        return view('admin.index')->with('count', $count)
+        ->with('count2', $count2);
     }
 
     /**
@@ -30,15 +29,13 @@ class DetailUserController extends Controller
      */
     public function create()
     {
-        $id=Sentinel::getUser()->id;
-        $details = DetailUser::where('user_id','=',$id)->get();
-        if($details != null){
-        Session::flash("notice","You Have Adding your detail");
-        return redirect()->route("details.index");
-        }else{
-            return view('users.create');
-        }
-        
+        //
+    }
+
+    public function list()
+    {
+        $details = DetailUser::where('status_cv','=','Unread')->paginate(6);
+        return view('admin.list')->with('details', $details);
     }
 
     /**
@@ -49,17 +46,13 @@ class DetailUserController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->except(['photo','file_cv']);
-        $input['user_id'] = Sentinel::getUser()->id ;
-        $input['photo'] = time().'.'.$request->photo->getClientOriginalExtension();
-        $request->photo->move(public_path('photo'), $input['photo']);
-        $input['file_cv'] = time().'.'.$request->file_cv->getClientOriginalExtension();
-        $request->file_cv->move(public_path('cv'), $input['file_cv']);   
-        DetailUser::create($input);
-        Session::flash("notice","Article success created");
-        return redirect()->route("details.create");
+        //
     }
-
+    public function user(Request $request)
+    {
+        $details = DetailUser::paginate(6);
+        return view('admin.admin')->with('details', $details);
+    }
     /**
      * Display the specified resource.
      *

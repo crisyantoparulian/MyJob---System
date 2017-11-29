@@ -29,7 +29,7 @@ class SessionsController extends Controller
                 $login=Sentinel::getUser()->id ;
                 $cek= DB::table('user_details')->where('user_id', '=', $login)->first();
                 if($cek!= null){
-                    return redirect()->intended('/');
+                    return redirect()->intended('details');
                 }else{
                     return redirect('details.create');    
                 }
@@ -39,12 +39,10 @@ class SessionsController extends Controller
     			return view('sessions.login');
     		}
         } catch (\Cartalyst\Sentinel\Checkpoints\NotActivatedException $e) {
-
         $errors = 'Account not activated.';
         Session::flash("error","Account Not Actived, Please Check Email");
         return Redirect::route('login');
-
-}
+        }
 
     }
 

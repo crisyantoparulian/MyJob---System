@@ -1,48 +1,29 @@
 @extends("layout.master")
 @section("content")
-<div class="container">
-    <div class="span3 well">
-        <center>
-        <a href="#aboutModal" data-toggle="modal" data-target="#myModal"><img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R" name="aboutme" width="140" height="140" class="img-circle"></a>
-        <h3>Joe Sixpack</h3>
-        <em>click my face for more</em>
-    </center>
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title" id="myModalLabel">More About Joe</h4>
-                    </div>
-                <div class="modal-body">
-                    <center>
-                    <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
-                    <h3 class="media-heading">Joe Sixpack <small>USA</small></h3>
-                    <span><strong>Skills: </strong></span>
-                        <span class="label label-warning">HTML5/CSS</span>
-                        <span class="label label-info">Adobe CS 5.5</span>
-                        <span class="label label-info">Microsoft Office</span>
-                        <span class="label label-success">Windows XP, Vista, 7</span>
-                    </center>
-                    <hr>
-                    <center>
-                    <p class="text-left"><strong>Bio: </strong><br>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sem dui, tempor sit amet commodo a, vulputate vel tellus.</p>
-                    <br>
-                    </center>
+@foreach($details as $detail) 
+<div class="container">    
+                <div class="jumbotron">
+                  <div class="row">
+                      <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                        <div  width="300px" height="400px">
+                          <img src="/photo/{{ $detail->photo }}" alt="stack photo" class="img-responsive">
+                        </div>
+                      </div>
+                      <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+                          <div class="container" style="border-bottom:1px solid black">
+                            <h2>{{$detail->full_name}}</h2>
+                          </div>
+                            <hr>
+                          <ul class="container details">
+                            <h3>Your CV Status : <li><p>{{$detail->status_cv}}</p></li></h3>
+                      </div>
+                  </div>
+                  <div align="center">
+                    <span>*Update your profile to increase your chance to accepted</span><br/>
+                   <button type="button" class="btn btn-info btn-lg btn3d" ></span> Edit Profile</button>
+                   </div>
                 </div>
-                <div class="modal-footer">
-                    <center>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">I've heard enough about Joe</button>
-                    </center>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 
-
+@endforeach
 @stop

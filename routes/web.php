@@ -26,3 +26,8 @@ Route::get('reset-password/{id}/{token}', 'ReminderController@edit')->name('remi
 Route::post('reset-password/{id}/{token}','ReminderController@update')->name('reminders.update');
 Route::get('activation/{id}/{token}','UsersController@update')->name('users.update');
 Route::resource('details', 'DetailUserController');
+Route::group(['prefix'=>'admin'], function(){
+	Route::resource('manages', 'AdminController');
+	Route::get('manages-list','AdminController@list')->name('manages.list');
+	Route::get('manages-admin','AdminController@user')->name('manages.admin');
+});

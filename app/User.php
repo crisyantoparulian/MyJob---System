@@ -18,6 +18,9 @@ class User extends Authenticatable
         'email','date_of_birth', 'password','permission',
     ];
 
+    public function DetailUser() {
+        return $this->hasOne('App\DetailUser', 'user_id');
+    }
     /**
      * The attributes that should be hidden for arrays.
      *

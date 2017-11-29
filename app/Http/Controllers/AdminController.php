@@ -7,11 +7,10 @@ use App\DetailUser;
 
 class AdminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct() {
+        $this->middleware('sentinel');
+        $this->middleware('sentinel.role');
+        }
     public function index()
     {
         $count = DetailUser::where('status_cv','=','Unread')->count();
@@ -34,7 +33,7 @@ class AdminController extends Controller
 
     public function list()
     {
-        $details = DetailUser::where('status_cv','=','Unread')->paginate(6);
+        $details = DetailUser::where('status_cv','=','Unread')->orderBy('created_at', 'asc')->paginate(6);
         return view('admin.list')->with('details', $details);
     }
 
@@ -62,6 +61,21 @@ class AdminController extends Controller
     public function show($id)
     {
         //
+    }
+
+    public function change($id)
+    {
+            $details = DetailUser::where('user_id','=',$id)->get()->first();
+            $details->status_cv = "Accepted";
+            $details->save();
+        return redirect()->route("manages.list");;
+    }
+    public function reject($id)
+    {
+            $details = DetailUser::where('user_id','=',$id)->get()->first();
+            $details->status_cv = "Rejected";
+            $details->save();
+        return redirect()->route("manages.list");;
     }
 
     /**

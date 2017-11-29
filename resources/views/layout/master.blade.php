@@ -72,6 +72,19 @@
       autoclose: true,
     })
   })
+
+  // Show a post
+        $(document).on('click', '.show-modal', function() {
+            $('.modal-title').text('Profile User');
+            $('#name_show').val($(this).data('name'));
+            $('#birth_show').val($(this).data('birth'));
+            $('#education_show').val($(this).data('education'));
+            $('#skills_show').val($(this).data('skills'));
+            $('#address_show').val($(this).data('address'));
+            $('#phone_show').val($(this).data('phone'));
+            $('#other_show').val($(this).data('other'));
+            $('#showModal').modal('show');
+        });
 </script>
 
 </body>

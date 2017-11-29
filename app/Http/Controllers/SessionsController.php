@@ -31,7 +31,7 @@ class SessionsController extends Controller
                 if($cek!= null){
                     return redirect()->intended('details');
                 }else{
-                    return redirect('details.create');    
+                    return redirect()->route('details.create');    
                 }
     			
     		}else{
@@ -41,7 +41,7 @@ class SessionsController extends Controller
         } catch (\Cartalyst\Sentinel\Checkpoints\NotActivatedException $e) {
         $errors = 'Account not activated.';
         Session::flash("error","Account Not Actived, Please Check Email");
-        return Redirect::route('login');
+       // return Redirect::route('login');
         }
 
     }

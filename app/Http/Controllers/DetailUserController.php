@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use File;
+use File,DB;
 use App\DetailUser;
 use Sentinel;
 use Session;
@@ -11,11 +11,10 @@ use Session;
 
 class DetailUserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct() {
+        $this->middleware('sentinel');
+        $this->middleware('sentinel.role');
+        }
     public function index()
     {
         $id=Sentinel::getUser()->id;
@@ -31,8 +30,8 @@ class DetailUserController extends Controller
     public function create()
     {
         $id=Sentinel::getUser()->id;
-        $details = DetailUser::where('user_id','=',$id)->get();
-        if($details != null){
+        $cek= DB::table('user_details')->where('user_id', '=', $id)->first();
+        if($cek != null){
         Session::flash("notice","You Have Adding your detail");
         return redirect()->route("details.index");
         }else{

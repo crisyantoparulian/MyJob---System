@@ -23,8 +23,12 @@ class SessionsController extends Controller
     public function login_store(SessionRequest $request)
     {
         try {
-    	if($user = Sentinel::authenticate($request->all()))
+        if($user = Sentinel::authenticate($request->all()))
     		{
+                if(Sentinel::getUser()->hasAccess('admin')) {
+                    Session::flash("notice", "Welcome ".$user->email);
+                    return redirect()->intended('admin/manages');
+                } else{ 
     			Session::flash("notice", "Welcome ".$user->email);
                 $login=Sentinel::getUser()->id ;
                 $cek= DB::table('user_details')->where('user_id', '=', $login)->first();
@@ -32,7 +36,7 @@ class SessionsController extends Controller
                     return redirect()->intended('details');
                 }else{
                     return redirect()->route('details.create');    
-                }
+                }}
     			
     		}else{
     			Session::flash("error","Login Fails");

@@ -1,6 +1,6 @@
 @extends("layout.master")
 @section("content")
-@section("content")
+
 
 
 <div align="center">
@@ -16,17 +16,17 @@
       <div class="col-md-3">
         <a href="{{url('admin/manages-list')}}" class="btn btn-block btn-lg btn-danger">
             <i class="fa fa-user" id="icone_grande"></i> <br><br>
-            <span class="texto_grande"><i class="fa fa-low-vision"></i> Unread Apllicant ({{$count}})</span></a>
+            <span class="texto_grande"><i class="fa fa-low-vision"></i> Unread CV ({{$count}})</span></a>
       </div>
       <div class="col-md-3">
         <a class="btn btn-block btn-lg btn-primary" data-toggle="modal" data-target="#mymodal">
             <i class="fa fa-cog fa-spin" id="icone_grande"></i> <br><br>
-            <span class="texto_grande"><i class="fa fa-edit"></i> EDIT Usuários</span></a>
+            <span class="texto_grande"><i class="fa fa-edit"></i> Setting</span></a>
       </div>
       <div class="col-md-3">
         <a class="btn btn-block btn-lg btn-warning" data-toggle="modal" data-target="#mymodal">
             <i class="fa fa-pied-piper-alt" id="icone_grande"></i> <br><br>
-            <span class="texto_grande"><i class="fa fa-list-ul"></i> LIST Usuários</span></a>
+            <span class="texto_grande"><i class="fa fa-list-ul"></i> Report</span></a>
       </div> 
 </div>
 

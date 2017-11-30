@@ -18,7 +18,7 @@ class User extends Authenticatable
         'email','date_of_birth', 'password','permission',
     ];
 
-    public function DetailUser() {
+    public function user_details() {
         return $this->hasOne('App\DetailUser', 'user_id');
     }
     /**

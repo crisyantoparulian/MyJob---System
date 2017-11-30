@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\DetailUser;
+use App\User;
+use DB,Session;
 
 class AdminController extends Controller
 {
@@ -14,13 +16,19 @@ class AdminController extends Controller
     public function index()
     {
         $count = DetailUser::where('status_cv','=','Unread')->count();
-        $count2 = DetailUser::all()->count();
+        $count2 = DetailUser::where('full_name','!=','Admin')->count();
 
        // dd($countall);
         return view('admin.index')->with('count', $count)
         ->with('count2', $count2);
     }
-
+    public function admin()
+    {
+        $details = DB::table('users')
+            ->leftJoin('user_details', 'users.id', '=', 'user_details.user_id')->where('full_name','!=','Admin')
+            ->get();
+        return view('admin.admin')->with('details', $details);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -109,6 +117,9 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+       DB::table('users')->where('id', '=', $id)->delete();
+       DB::table('user_details')->where('user_id', '=', $id)->delete();
+        Session::flash("notice", "User success deleted");
+        return redirect()->route("manages.admin");
     }
 }

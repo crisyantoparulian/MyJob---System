@@ -28,6 +28,9 @@ body {
 	line-height:1.6em;
 	color:#656565;
 }
+.photoku{
+	width: 80px;
+}
 .texto_grande {
     font-size: 2.5rem;
     color: white;

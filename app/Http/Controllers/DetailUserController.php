@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use File,DB;
 use App\DetailUser;
+use App\Http\Requests\DetailRequest;
 use Sentinel;
 use Session;
 
@@ -46,7 +47,7 @@ class DetailUserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DetailRequest $request)
     {
         $input = $request->except(['photo','file_cv']);
         $input['user_id'] = Sentinel::getUser()->id ;
@@ -90,7 +91,16 @@ class DetailUserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+            $detail = DetailUser::where('user_id','=',$id)->first();
+            $detail->full_name = $request->full_name;
+            $detail->place_of_birth = $request->place_of_birth;
+            $detail->last_education = $request->last_education;
+            $detail->skills = $request->skills;
+            $detail->address = $request->address;
+            $detail->phone_number = $request->phone_number;
+            $detail->other_information = $request->other_information;
+            $detail->save();
+            return response()->json($detail);
     }
 
     /**

@@ -13,6 +13,11 @@
           <div class="navbar-collapse collapse ">
             <ul class="nav navbar-nav">
                @if (Sentinel::check())
+                      @if(Sentinel::getUser()->hasAccess('admin')) 
+                      <li>{!! link_to(route('manages.index'), 'Admin') !!}</li>
+                    @else
+                    <li>{!! link_to(route('details.index'), 'Status') !!}</li>
+                    @endif
                      <li><a>Wellcome {!! Sentinel::getUser()->email !!}</a></li>
                     <li>{!! link_to(route('logout'), 'Logout') !!}</li>
                     @else

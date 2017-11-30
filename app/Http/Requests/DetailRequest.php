@@ -13,7 +13,7 @@ class DetailRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -27,9 +27,8 @@ class DetailRequest extends FormRequest
             'full_name'=>'required|max:60|min:2',
             'last_education'=>'required|max:50|min:2',
             'skills'=>'required|max:80|min:2',
-            'phone_number'=>'required|max:50|min:2|integer',
             'place_of_birth'=>'required|max:50|min:2',
-            'photo' => 'required|mimes|jpeg,bmp,png',
+            'photo' => 'required',
             'file_cv' => 'required|mimes:pdf|max:10000',
             'address'=>'required|max:150|min:10',
         ];

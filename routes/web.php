@@ -29,7 +29,7 @@ Route::resource('details', 'DetailUserController');
 Route::group(['prefix'=>'admin'], function(){
 	Route::resource('manages', 'AdminController');
 	Route::get('manages-list','AdminController@list')->name('manages.list');
-	Route::get('manages-admin','AdminController@user')->name('manages.admin');
+	Route::get('manages-admin','AdminController@admin')->name('manages.admin');
 	Route::get('change/{user_id}','AdminController@change')->name('manages.change');
-	Route::get('change/{user_id}','AdminController@reject')->name('manages.reject');
+	Route::get('reject/{user_id}','AdminController@reject')->name('manages.reject');
 });

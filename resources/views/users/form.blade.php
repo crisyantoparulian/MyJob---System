@@ -82,7 +82,6 @@
 {!! Form::label('file_cv', 'Choose Your CV', array('class' => 'col-lg-3 control-label')) !!}
 		<div class="col-lg-9">     
 			<input type="file" name="file_cv" id="file_cv" accept="application/pdf" />
-            <!--     <input type="file" name="image" class="form-control"> -->
             <span>*Pdf Only</span>
             </div>
 <div class="text-danger">{!! $errors->first('file_cv') !!}</div>

@@ -9,7 +9,7 @@ class DetailUser extends Model
     protected $table= 'user_details';
     protected  $primaryKey = 'user_id';
     
-    public function User() {
+    public function user() {
 		return $this->belongsTo('App\User', 'user_id');
 	}
     protected $fillable = [

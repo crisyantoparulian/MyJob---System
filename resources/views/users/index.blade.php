@@ -23,11 +23,13 @@
                   </div>
                   <div align="center">
                     <span>*Update your profile to increase your chance to accepted</span><br/>
-                   <button type="button" class="edit-modal btn btn-info" data-user_id="{{$detail->user_id}}" data-full_name="{{$detail->full_name}}" data-photo="{{$detail->photo}}" data-place_of_birth="{{$detail->place_of_birth}}" data-last_education="{{$detail->last_education}}" data-skills="{{$detail->skills}}" data-address="{{$detail->address}}" data-file_cv="{{$detail->file_cv}}" data-phone_number="{{$detail->phone_number}}" data-other_information="{{$detail->other_information}}"></span> Edit Profile </button>
+                  {!! link_to(route('details.edit', $detail->user_id), 'Update', ['class' => 'btn btn-info']) !!}
                    </div>
-                   <div id="editModal" class="modal fade" role="dialog">
-               <div class="modal-body">
-                    <form class="form-horizontal"  role="form">
+
+                   <!--  data-user_id="{{$detail->user_id}}" data-full_name="{{$detail->full_name}}" data-photo="{{$detail->photo}}" data-place_of_birth="{{$detail->place_of_birth}}" data-last_education="{{$detail->last_education}}" data-skills="{{$detail->skills}}" data-address="{{$detail->address}}" data-file_cv="{{$detail->file_cv}}" data-phone_number="{{$detail->phone_number}}" data-other_information="{{$detail->other_information}}" -->
+<!--                    <div id="editModal" class="modal fade" role="dialog">
+               <div class="modal-body modal-md panel">
+                    <form class="form-horizontal" enctype="multipart/form-data" role="form">
                       <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="id">ID:</label>
@@ -110,7 +112,7 @@
                      </form>
                 </div>
               </div>
-                      </div>
+                      </div> -->
         <!-- edit modal -->
    
 

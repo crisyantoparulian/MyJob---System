@@ -68,7 +68,7 @@
 
 <!-- Modal form to show a post -->
     <div id="showModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-md panel">
            
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>

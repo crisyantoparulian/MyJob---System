@@ -79,7 +79,8 @@ class DetailUserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $detail = DB::table('user_details')->where('user_id', '=', $id)->first();
+        return view('users.edit')->with('detail',$detail);
     }
 
     /**
@@ -93,14 +94,24 @@ class DetailUserController extends Controller
     {
             $detail = DetailUser::where('user_id','=',$id)->first();
             $detail->full_name = $request->full_name;
+            if($request->photo !=null ){
+            $request->photo->move(public_path('photo'), $detail->photo);   
+                }
             $detail->place_of_birth = $request->place_of_birth;
             $detail->last_education = $request->last_education;
             $detail->skills = $request->skills;
             $detail->address = $request->address;
+            if($request->file_cv !=null ){
+            $request->file_cv->move(public_path('cv'), $detail->file_cv);
+            if($detail->status_cv == "Rejected"){
+                $detail->status_cv = "Unread";
+            }   
+                }
             $detail->phone_number = $request->phone_number;
             $detail->other_information = $request->other_information;
             $detail->save();
-            return response()->json($detail);
+            Session::flash("notice","Profile success update");
+            return redirect()->route("details.index");
     }
 
     /**

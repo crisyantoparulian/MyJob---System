@@ -122,16 +122,18 @@
             $.ajax({
                 type: 'PUT',
                 url: 'details/' + id,
+                processData: false,
+                contentType: false,
                 data: {
                     '_token': $('input[name=_token]').val(),
                     'user_id': $("#user_id_edit").val(),
                     'full_name': $('#full_name_edit').val(),
-                    'photo': $('#photo_edit').val(),
+                    // 'photo': $('#photo_edit').val(),
                     'place_of_birth': $('#place_of_birth_edit').val(),
                     'last_education': $('#last_education_edit').val(),
                     'skills': $('#skills_edit').val(),
                     'address': $('#address_edit').val(),
-                    'file_cv': $('#file_cv_edit').val(),
+                    // 'file_cv': $('#file_cv_edit').val(),
                     'phone_number': $('#phone_number_edit').val(),
                     'other_information': $('#other_information_edit').val()
                 },
